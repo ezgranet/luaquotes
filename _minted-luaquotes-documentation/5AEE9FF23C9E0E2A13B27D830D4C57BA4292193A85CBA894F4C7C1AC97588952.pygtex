@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-
-\PYG{n}{luatexbase}\PYG{p}{.}\PYG{n}{add\PYGZus{}to\PYGZus{}callback} \PYG{p}{(}
-   \PYG{l+s+s2}{\PYGZdq{}process\PYGZus{}input\PYGZus{}buffer\PYGZdq{}} \PYG{p}{,} \PYG{n}{doublequotes} \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}doublequotes\PYGZdq{}} \PYG{p}{)}
-\end{Verbatim}

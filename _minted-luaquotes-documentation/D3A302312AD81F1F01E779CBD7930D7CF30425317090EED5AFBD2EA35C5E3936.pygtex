@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-         \PYG{n+nb}{\PYGZcb{}}
-\PYG{c}{\PYGZpc{}\PYGZpc{} Two utility macros to activate/deactivate the Lua function:}
-\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}frdoublequoteson}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}
-\end{Verbatim}

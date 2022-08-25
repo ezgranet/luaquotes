@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kr}{function} \PYG{n+nf}{desinglequotesclose}\PYG{p}{(} \PYG{n}{s} \PYG{p}{)}
-\PYG{k+kr}{return} \PYG{p}{(} \PYG{n}{s}\PYG{p}{:}\PYG{n}{gsub} \PYG{p}{(} \PYG{l+s+s2}{\PYGZdq{} \PYGZsq{}(..\PYGZhy{})\PYGZsq{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{} ‚}\PYG{err}{\PYGZbs{}}\PYG{l+s+s2}{\PYGZpc{}1`\PYGZdq{}} \PYG{p}{)} \PYG{p}{)}
-         \PYG{k+kr}{end}
-\end{Verbatim}

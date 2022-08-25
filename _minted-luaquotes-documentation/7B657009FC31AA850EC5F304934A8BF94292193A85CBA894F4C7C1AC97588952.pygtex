@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{luatexbase}\PYG{p}{.}\PYG{n}{remove\PYGZus{}from\PYGZus{}callback} \PYG{p}{(}
-   \PYG{l+s+s2}{\PYGZdq{}process\PYGZus{}input\PYGZus{}buffer\PYGZdq{}} \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}desinglequotesclose\PYGZdq{}} \PYG{p}{)}
-\end{Verbatim}

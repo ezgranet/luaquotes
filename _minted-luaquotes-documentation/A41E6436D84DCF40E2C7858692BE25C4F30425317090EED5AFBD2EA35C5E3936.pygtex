@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-
-    \PYG{k}{\PYGZbs{}DeclareOption}\PYG{n+nb}{\PYGZob{}}en\PYG{n+nb}{\PYGZcb{}\PYGZob{}}
-
-\PYG{k}{\PYGZbs{}AtBeginDocument}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}smartquotes}\PYG{n+nb}{\PYGZcb{}}
-\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}texttt}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZob{}}\PYG{k}{\PYGZbs{}ttfamily\PYGZbs{}addfontfeature}\PYG{n+nb}{\PYGZob{}}RawFeature=\PYG{n+nb}{\PYGZob{}}+qtbye,\PYGZhy{}tlig\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}\PYG{k}{\PYGZbs{}dumbquotes} \PYGZsh{}1\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
-
-    \PYG{n+nb}{\PYGZcb{}}
-\end{Verbatim}

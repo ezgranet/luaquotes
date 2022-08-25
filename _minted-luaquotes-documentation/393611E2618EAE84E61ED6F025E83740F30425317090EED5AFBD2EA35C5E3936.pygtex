@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{\PYGZbs{}usepackage}\PYG{n+na}{[fr]}\PYG{n+nb}{\PYGZob{}}luaquotes\PYG{n+nb}{\PYGZcb{}} \PYG{c}{\PYGZpc{}French}
-\PYG{k}{\PYGZbs{}usepackage}\PYG{n+na}{[de]}\PYG{n+nb}{\PYGZob{}}luaquotes\PYG{n+nb}{\PYGZcb{}} \PYG{c}{\PYGZpc{} German}
-\end{Verbatim}
