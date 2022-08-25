@@ -1,0 +1,23 @@
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+feature liga {
+  sub \f \f by \ff;
+  sub \f \i by \fi;
+  sub \f \l by \fl;
+  sub \f \f \i by \ffi;
+  sub \f \f \l by \ffl;
+} liga;
+
+feature sups {
+  sub \zero by \zerosuperior;
+  sub \one by \onesuperior;
+  sub \two by \twosuperior;
+  sub \three by \threesuperior;
+  sub \four by \foursuperior;
+  sub \five by \fivesuperior;
+  sub \six by \sixsuperior;
+  sub \seven by \sevensuperior;
+  sub \eight by \eightsuperior;
+  sub \nine by \ninesuperior;
+} sups;

@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+   \PYG{k}{\PYGZbs{}newcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}desmartquotes}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}dedoublequoteson}
+\PYG{k}{\PYGZbs{}desinglequotelinestarton}
+\PYG{k}{\PYGZbs{}desinglequoteson}
+\PYG{k}{\PYGZbs{}desinglequotescloseon}\PYG{n+nb}{\PYGZcb{}}
+   \PYG{k}{\PYGZbs{}newcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}dedumbquotes}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}dedoublequotesoff}
+\PYG{k}{\PYGZbs{}desinglequotelinestartoff}
+\PYG{k}{\PYGZbs{}desinglequotesoff}
+\PYG{k}{\PYGZbs{}desinglequotescloseoff}\PYG{n+nb}{\PYGZcb{}}
+   \PYG{k}{\PYGZbs{}DeclareOption}\PYG{n+nb}{\PYGZob{}}de\PYG{n+nb}{\PYGZcb{}\PYGZob{}}
+
+\PYG{k}{\PYGZbs{}AtBeginDocument}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}desmartquotes}\PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}texttt}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZob{}}\PYG{k}{\PYGZbs{}ttfamily\PYGZbs{}addfontfeature}\PYG{n+nb}{\PYGZob{}}RawFeature=\PYG{n+nb}{\PYGZob{}}+qtbye,\PYGZhy{}tlig\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}\PYG{k}{\PYGZbs{}dedumbquotes} \PYGZsh{}1\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+
+
+\PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

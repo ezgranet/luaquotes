@@ -1,0 +1,77 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} the CENSOR COMMAND}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+
+\PYG{k}{\PYGZbs{}newif\PYGZbs{}ifcnsr\PYGZbs{}cnsrfalse}
+\PYG{k}{\PYGZbs{}newcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}cnsr}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}ifcnsr}\PYG{n+nb}{\PYGZob{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}}equation*\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}}equation\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}}table\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}}table*\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}}tabular\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}}tabular*\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}voidenvironment}\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} I don\PYGZsq{}t know how many}
+\PYG{c}{\PYGZpc{} people use TEX native accent commands}
+\PYG{c}{\PYGZpc{} in LuaTEX given that using Unicode is more}
+\PYG{c}{\PYGZpc{}people\PYGZsq{}s style.  But just in case, because these can lead to stray accent marks floating above censored letters.}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}`}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}\PYGZsq{}}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}\PYGZca{}}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}\PYGZdq{}}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}H}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}\PYGZti{}}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}c}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}k}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}l}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}=}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}b}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}.}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}d}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}r}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}u}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}v}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}t}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}o}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}renewcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}i}\PYG{n+nb}{\PYGZcb{}}[1]\PYG{n+nb}{\PYGZob{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}d}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} here we have the accsupp magic}
+\PYG{c}{\PYGZpc{} this operates by replacing the \PYGZsq{}x\PYGZsq{}s}
+\PYG{c}{\PYGZpc{} or unicode black squares as the case}
+\PYG{c}{\PYGZpc{} may be with an alt text}
+\PYG{c}{\PYGZpc{} this serves a dual purpose of both making}
+\PYG{c}{\PYGZpc{}pdftotext not break with huge strings of meaningless characters}
+\PYG{c}{\PYGZpc{}but more importantly}
+\PYG{c}{\PYGZpc{} it means screen readers don\PYGZsq{}t subject}
+\PYG{c}{\PYGZpc{}. their users to the meaningless reading out of unicode black squares 50 times in a row!}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{k}{\PYGZbs{}BeginAccSupp}\PYG{n+nb}{\PYGZob{}}method=plain,ActualText=\PYG{n+nb}{\PYGZob{}}TEXT REDACTED\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}rndstring}\PYG{n+nb}{\PYGZob{}}\PYGZsh{}1\PYG{n+nb}{\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}EndAccSupp}\PYG{n+nb}{\PYGZob{}\PYGZcb{}\PYGZcb{}}\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}else}\PYG{c}{\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} if the conditional is off}
+\PYG{c}{\PYGZpc{} the command does absolutely nothing}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYGZsh{}1\PYG{c}{\PYGZpc{}}
+\PYG{k}{\PYGZbs{}fi}\PYG{n+nb}{\PYGZcb{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\end{Verbatim}

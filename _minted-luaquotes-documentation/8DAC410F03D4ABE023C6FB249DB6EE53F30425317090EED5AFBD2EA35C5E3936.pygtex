@@ -1,0 +1,64 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+  \PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} Default option (English)}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+ \PYG{k}{\PYGZbs{}DeclareOption}\PYG{n+nb}{\PYGZob{}}en\PYG{n+nb}{\PYGZcb{}\PYGZob{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} Code here and throughout similar}
+\PYG{c}{\PYGZpc{}functions adapted from TeX.SE user}
+\PYG{c}{\PYGZpc{} Mico}
+\PYG{c}{\PYGZpc{} https://tex.stackexchange.com/questions/499953/how\PYGZhy{}to\PYGZhy{}generate\PYGZhy{}correct\PYGZhy{}single\PYGZhy{}and\PYGZhy{}double\PYGZhy{}quotes\PYGZhy{}in\PYGZhy{}tex}
+
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{k}{\PYGZbs{}luaexec}\PYG{n+nb}{\PYGZob{}}function doublequotes ( s )
+           return ( s:gsub ( ‘“(..\PYGZhy{})”\PYGZsq{} , ““\PYG{k}{\PYGZbs{}\PYGZpc{}}1”” ) )
+         end\PYG{n+nb}{\PYGZcb{}}
+
+         \PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} Assuming ‘ at the start of the line means an opening quotation mark not an apostrophe}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{k}{\PYGZbs{}luaexec}\PYG{n+nb}{\PYGZob{}}function singlequotelinestart ( s )
+           return (s:gsub (“\PYG{n+nb}{\PYGZca{}}\PYGZsq{}”,“‘” )  )
+        end\PYG{n+nb}{\PYGZcb{}}
+
+\PYG{k}{\PYGZbs{}luaexec}\PYG{n+nb}{\PYGZob{}}function singlequotes( s )
+           return ( s:gsub ( “ ‘”,“ ‘” ) )
+         end\PYG{n+nb}{\PYGZcb{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} activation and deactivation}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}doublequoteson}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.add\PYG{n+nb}{\PYGZus{}}to\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , doublequotes , “doublequotes” )\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}doublequotesoff}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.remove\PYG{n+nb}{\PYGZus{}}from\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , “doublequotes” )\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}singlequotelinestarton}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.add\PYG{n+nb}{\PYGZus{}}to\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , singlequotelinestart , “singlequotelinestart” )\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}singlequotelinestartoff}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.remove\PYG{n+nb}{\PYGZus{}}from\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , “singlequotelinestart” )\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}singlequoteson}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.add\PYG{n+nb}{\PYGZus{}}to\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , singlequotes , “singlequotes” )\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}singlequotesoff}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.remove\PYG{n+nb}{\PYGZus{}}from\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , “singlequoteson” )\PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+   \PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} global functions, useful for things like this}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+   \PYG{k}{\PYGZbs{}newcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}smartquotes}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}doublequoteson}\PYG{c}{\PYGZpc{}}
+   \PYG{k}{\PYGZbs{}singlequotelinestarton}\PYG{c}{\PYGZpc{}}
+   \PYG{k}{\PYGZbs{}singlequoteson}\PYG{n+nb}{\PYGZcb{}}
+   \PYG{k}{\PYGZbs{}newcommand}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}dumbquotes}\PYG{n+nb}{\PYGZcb{}\PYGZob{}}\PYG{k}{\PYGZbs{}doublequotesff}\PYG{c}{\PYGZpc{}}
+   \PYG{k}{\PYGZbs{}singlequotelinestartoff}\PYG{c}{\PYGZpc{}}
+   \PYG{k}{\PYGZbs{}singlequotesoff}\PYG{n+nb}{\PYGZcb{}}
+   \PYG{k}{\PYGZbs{}AtBeginDocument}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}smartquotes}\PYG{n+nb}{\PYGZcb{}}
+    \PYG{n+nb}{\PYGZcb{}}
+\end{Verbatim}

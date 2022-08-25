@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{function} \PYG{n+nf}{desinglequotelinestart} \PYG{p}{(} \PYG{n}{s} \PYG{p}{)}
+           \PYG{k+kr}{return} \PYG{p}{(}\PYG{n}{s}\PYG{p}{:}\PYG{n}{gsub} \PYG{p}{(}\PYG{err}{“}\PYG{o}{\PYGZca{}}\PYG{l+s+s1}{\PYGZsq{}”,“‚” )  )}
+\PYG{l+s+s1}{        end}
+\end{Verbatim}

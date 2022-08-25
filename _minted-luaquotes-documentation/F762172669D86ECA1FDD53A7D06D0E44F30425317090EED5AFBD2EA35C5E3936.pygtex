@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}frsinglequotelinestarton}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}
+\end{Verbatim}

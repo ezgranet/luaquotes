@@ -1,0 +1,278 @@
+\def\luaquotesversionnumber{1.0.0}
+\ProvidesPackage{luaquotes-font}
+  [2022/08/01\luaquotesversionnumber smart quotes with lua]
+  % !TeX program = lualatex                                   
+% !TeX encoding = utf8
+% This work may be distributed and/or modified under the 
+% conditions of the LaTeX Project Public License, either version 1.3 
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX 
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Elijah Z Granet
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% to show the package only works with Lua
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \RequirePackage{iftex}
+  \ifPDFTeX {
+    \PackageError{luaquotes}
+      {You are using pdfTeX but this package only works 
+      \MessageBreak with LuaTeX}{}
+  }
+\else\ifXeTeX{    \PackageError{luaquotes}
+      {You are using XeTeX but this package only works 
+      \MessageBreak with LuaTeX}{}
+}\fi\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dependency
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \RequirePackage{luacode} 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fontspec for the auxiliary 
+% quotes where tligs need
+% to be disabled
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \RequirePackage{fontspec}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Default option (English)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code here and throughout similar 
+%functions adapted from TeX.SE user
+% Mico 
+% https://tex.stackexchange.com/questions/499953/how-to-generate-correct-single-and-double-quotes-in-tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\luaexec{
+function doublequotes ( s )
+           return ( s:gsub ( '"(..-)"' , "“\%1”" ) )
+         end}
+
+         %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Assuming ' at the start of the line means an opening quotation mark not an apostrophe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\luaexec{function singlequotelinestart ( s )
+           return (s:gsub ("^'","‘" )  )
+        end}
+         
+\luaexec{function singlequotes ( s )
+           return ( s:gsub ( " '"," ‘" ) )
+         end}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% activation and deactivation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\doublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , doublequotes , "doublequotes" )}}
+\newcommand\doublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , 
+   "doublequotes" )}}
+\newcommand\singlequotelinestarton{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , singlequotelinestart , "singlequotelinestart" )
+   }}
+\newcommand\singlequotelinestartoff{\directlua{
+luatexbase.remove_from_callback (
+   "process_input_buffer" , "singlequotelinestart" )
+   }}
+\newcommand\singlequoteson{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , singlequotes , "singlequotes" )
+   }}
+\newcommand\singlequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "singlequotes" )}}
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% global functions, useful for things like this
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \newcommand{\smartquotes}{\doublequoteson\singlequotelinestarton\singlequoteson}
+   \newcommand{\dumbquotes}{\doublequotesoff\singlequotelinestartoff\singlequotesoff}
+    \DeclareOption{en}{
+
+\AtBeginDocument{\smartquotes}
+    }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% auxiliary punctuation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Essentially to be used where the
+% thing fails to provide the 
+%q uotation or 
+% quote like punctuation
+% needed 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% German quotations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\desingle}{{\addfontfeature{RawFeature=-tlig}\symbol{"201A}}}
+\newcommand{\dedouble}{{\addfontfeature{RawFeature=-tlig}\symbol{"201E}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Straight double 
+% and single quotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\dqtwo}{{\addfontfeature{RawFeature=-tlig}\symbol{"0022}}}
+\newcommand{\dqone}{{\addfontfeature{RawFeature=-tlig}\symbol{"0027}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prime, mostly for 
+% Feet and inches
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\lqprime}{′}
+\newcommand{\lqdoubleprime}{″}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Okina, for typing 
+% Hawaiʻi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\okina}{ʻ}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The individual smart quotes
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sqtwoleft}{{\addfontfeature{RawFeature=-tlig}“}}
+\newcommand{\sqtworight}{{\addfontfeature{RawFeature=-tlig}”}}
+\newcommand{\sqoneright}{{\addfontfeature{RawFeature=-tlig}’}}
+\newcommand{\lqapost}{{\addfontfeature{RawFeature=-tlig}’ }}
+\newcommand{\sqoneleft}{{\addfontfeature{RawFeature=-tlig}‘}}
+\newcommand{\glmtl}{«\,}
+\newcommand{\glmtr}{\,»}
+\newcommand{\sglmtl}{‹\,}
+\newcommand{\sglmtr}{\,›}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEUTSCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\luaexec{function dedoublequotes ( s )
+           return ( s:gsub ( '"(..-)"' , "„\%1``" ) )
+         end}
+\luaexec{function desinglequotelinestart ( s )
+           return (s:gsub ("^'","‚" )  )
+        end}
+\luaexec{function desinglequotesclose( s )
+return ( s:gsub ( " '(..-)'", " ‚\%1`" ) )
+         end}
+
+%% Two utility macros to activate/deactivate the Lua function:
+\newcommand\dedoublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , dedoublequotes , "dedoublequotes" )}}
+\newcommand\dedoublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "dedoublequotes" )}}
+\newcommand\desinglequotelinestarton{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , desinglequotelinestart , "desinglequotelinestart" )}}
+\newcommand\desinglequotelinestartoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "desinglequotelinestart" )}}
+\newcommand\desinglequoteson{}
+\newcommand\desinglequotesoff{}
+   \newcommand\desinglequotescloseon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , desinglequotesclose , "desinglequotesclose" )}}
+\newcommand\desinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "desinglequotesclose" )}}
+   \newcommand{\desmartquotes}{\dedoublequoteson\desinglequotelinestarton\desinglequoteson\desinglequotescloseon}
+   \newcommand{\dedumbquotes}{\dedoublequotesoff\desinglequotelinestartoff\desinglequotesoff\desinglequotescloseoff}
+   \DeclareOption{de}{
+\AtBeginDocument{\desmartquotes}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Français
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\luaexec{function frdoublequotes ( s )
+           return ( s:gsub ( '"(..-)"' , "«\\,\%1\\,»" ) )
+         end}
+%     
+%    ‹\\,}
+%\newcommand{\sglmtr}{\\,›
+
+
+\luaexec{function frsinglequotelinestart ( s )
+           return (s:gsub ("^'","'" )  )
+        end}
+\luaexec{function frsinglequotesclose( s )
+return ( s:gsub ( " '(..-)'", "‹\\,\%1\\,›" ) )
+         end}
+
+%% Two utility macros to activate/deactivate the Lua function:
+\newcommand\frdoublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,frdoublequotes , "frdoublequotes" )}}
+\newcommand\frdoublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frdoublequotes" )}}
+\newcommand\frsinglequotelinestarton{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,frsinglequotelinestart , "frsinglequotelinestart" )}}
+\newcommand\frsinglequotelinestartoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frsinglequotelinestart" )}}
+\newcommand\frsinglequotesoff{}
+   \newcommand\frsinglequotescloseon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,frsinglequotesclose , "frsinglequotesclose" )}}
+\newcommand\frsinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frsinglequotesclose" )}}
+   \newcommand{\frsmartquotes}{\frdoublequoteson\frsinglequotelinestarton\frsinglequotescloseon}
+   \newcommand{\frdumbquotes}{\frdoublequotesoff\frsinglequotelinestartoff\frsinglequotescloseoff}
+   \DeclareOption{fr}{
+
+\AtBeginDocument{\frsmartquotes}
+\renewcommand{\texttt}[1]{\ttfamily\frdumbquotes #1}
+
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% No smart quotes in monospace
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\DeclareOption{smartmono}{
+%
+%}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Default option is English
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \ProcessOptions*
+
+\ExecuteOptions{en}% 
+
+  

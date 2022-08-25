@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{} to show the package only works with Lua}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+\PYG{c}{\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}\PYGZpc{}}
+  \PYG{k}{\PYGZbs{}RequirePackage}\PYG{n+nb}{\PYGZob{}}iftex\PYG{n+nb}{\PYGZcb{}}
+  \PYG{k}{\PYGZbs{}ifPDFTeX} \PYG{n+nb}{\PYGZob{}}
+    \PYG{k}{\PYGZbs{}PackageError}\PYG{n+nb}{\PYGZob{}}luaquotes\PYG{n+nb}{\PYGZcb{}}
+      \PYG{n+nb}{\PYGZob{}}You are using pdfTeX but this package only works
+      \PYG{k}{\PYGZbs{}MessageBreak} with LuaTeX\PYG{n+nb}{\PYGZcb{}\PYGZob{}\PYGZcb{}}
+  \PYG{n+nb}{\PYGZcb{}}
+\PYG{k}{\PYGZbs{}else\PYGZbs{}ifXeTeX}\PYG{n+nb}{\PYGZob{}}    \PYG{k}{\PYGZbs{}PackageError}\PYG{n+nb}{\PYGZob{}}luaquotes\PYG{n+nb}{\PYGZcb{}}
+      \PYG{n+nb}{\PYGZob{}}You are using XeTeX but this package only works
+      \PYG{k}{\PYGZbs{}MessageBreak} with LuaTeX\PYG{n+nb}{\PYGZcb{}\PYGZob{}\PYGZcb{}}
+\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}fi\PYGZbs{}fi}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+   \PYG{n+nb}{\PYGZcb{}\PYGZcb{}}
+\PYG{k}{\PYGZbs{}newcommand\PYGZbs{}dedoublequotesoff}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}directlua}\PYG{n+nb}{\PYGZob{}}luatexbase.remove\PYG{n+nb}{\PYGZus{}}from\PYG{n+nb}{\PYGZus{}}callback (
+   “process\PYG{n+nb}{\PYGZus{}}input\PYG{n+nb}{\PYGZus{}}buffer” , “dedoublequotes” )
+\end{Verbatim}
