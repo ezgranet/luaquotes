@@ -1,6 +1,6 @@
 luaquotes - smart quotes with lua
 
-version: 1.0.0
+version: 1.0.1
 
 This package automatically creates smart quotes using lua filters and provides auxiliary commands for typesetting specific lua punctuation
 
@@ -11,4 +11,6 @@ LaTeX Project Public License (LPPL), version 1.3 or later.
 For suggestions, feature requests, and bug reports, please use the project's
 GitHub site:  https://github.com/ezgranet/luaquotes
 
-Version history: 24/08/2022 —package creation
+Version history: 
+28/08/2022—resolving bug with language versions
+24/08/2022 —package creation

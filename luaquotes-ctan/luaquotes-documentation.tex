@@ -255,7 +255,7 @@ breaklines,
 firstnumber=last
 ]
 {latex}
-\def\luaquotesversionnumber{1.0.0}
+\def\luaquotesversionnumber{1.0.1}
 \ProvidesPackage{luaquotes}
   [2022/08/01\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
@@ -703,12 +703,15 @@ firstnumber=last
 ]
 {latex}
 
-    \DeclareOption{en}{
-
-\AtBeginDocument{\smartquotes}
-\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}}\dumbquotes #1}}
-
+           \DeclareOption{en}{
+\AtBeginDocument{
+\frsmartquotes
+\frdumbquotes
+\desmartquotes
+\dedumbquotes\smartquotes}
+\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
     }
+
     \end{minted} 
     \subsection{Auxiliary punctuation}
     \begin{minted}[
@@ -1057,18 +1060,13 @@ firstnumber=last
    }}
    \newcommand{\desmartquotes}{\dedoublequoteson
 \desinglequotelinestarton
-\desinglequoteson
 \desinglequotescloseon}
    \newcommand{\dedumbquotes}{\dedoublequotesoff
 \desinglequotelinestartoff
-\desinglequotesoff
 \desinglequotescloseoff}
    \DeclareOption{de}{
-  
 \AtBeginDocument{\desmartquotes}
-\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}}\dedumbquotes #1}}
-
-
+\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 }
    \end{minted} 
    \subsection{The French option}
@@ -1344,16 +1342,14 @@ firstnumber=last
 ]
 {latex}
 }}
-   \newcommand{\frsmartquotes}{\frdoublequoteson
 \frsinglequotelinestarton
 \frsinglequotescloseon}
    \newcommand{\frdumbquotes}{\frdoublequotesoff
 \frsinglequotelinestartoff
-\frsinglequotescloseoff}   \DeclareOption{fr}{
-
-\AtBeginDocument{\frsmartquotes}
-\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}}\frdumbquotes #1}}
-
+\frsinglequotescloseoff}
+   \DeclareOption{fr}{
+\AtBeginDocument{\desmartquotes\dedumbquotes\smartquotes\dumbquotes\frsmartquotes}
+\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 
 }
    \end{minted} 
@@ -1380,6 +1376,11 @@ firstnumber=last
 
 \end{minted}
 \section{Version History}
+\subsection{\texttt{1.0.1}}
+
+\ttfamily 28 August 2022: Change bug preventing non-English usage
+
+
 \subsection{\texttt{1.0.0}}
 
 \ttfamily 21 August 2022: Package creation

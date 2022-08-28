@@ -1,4 +1,4 @@
-\def\luaquotesversionnumber{1.0.0}
+\def\luaquotesversionnumber{1.0.1}
 \ProvidesPackage{luaquotes}
   [2022/08/01\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
@@ -136,7 +136,7 @@ luatexbase.add_to_callback (
    \singlequotesoff}
    
        \DeclareOption{en}{
-\AtBeginDocument{\smartquotes}
+\AtBeginDocument{\frsmartquotes\frdumbquotes\desmartquotes\dedumbquotes\smartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
     }
 
@@ -240,18 +240,13 @@ return ( s:gsub ( " '(..-)'", " ‚\%1`" ) )
    "process_input_buffer" , "desinglequotesclose" )}}
    \newcommand{\desmartquotes}{\dedoublequoteson
 \desinglequotelinestarton
-\desinglequoteson
 \desinglequotescloseon}
    \newcommand{\dedumbquotes}{\dedoublequotesoff
 \desinglequotelinestartoff
-\desinglequotesoff
 \desinglequotescloseoff}
    \DeclareOption{de}{
-  
 \AtBeginDocument{\desmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
-
-
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -291,8 +286,7 @@ return ( s:gsub ( " '(..-)'", " ‹\\,\%1\\,›" ) )
 \frsinglequotelinestartoff
 \frsinglequotescloseoff}
    \DeclareOption{fr}{
-
-\AtBeginDocument{\frsmartquotes}
+\AtBeginDocument{\desmartquotes\dedumbquotes\smartquotes\dumbquotes\frsmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 
 

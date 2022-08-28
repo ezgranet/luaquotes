@@ -265,7 +265,7 @@ return ( s:gsub ( " '(..-)'", " ‚\%1`" ) )
 
 
 \luaexec{function frsinglequotelinestart ( s )
-           return (s:gsub ("^'","'" )  )
+           return (s:gsub ("^'"," '" )  )
         end}
 \luaexec{function frsinglequotesclose( s )
 return ( s:gsub ( " '(..-)'", " ‹\\,\%1\\,›" ) )
