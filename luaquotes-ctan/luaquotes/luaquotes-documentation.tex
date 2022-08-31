@@ -255,7 +255,7 @@ breaklines,
 firstnumber=last
 ]
 {latex}
-\def\luaquotesversionnumber{1.0.1}
+\def\luaquotesversionnumber{1.0.2}
 \ProvidesPackage{luaquotes}
   [2022/08/01\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
@@ -1065,7 +1065,12 @@ firstnumber=last
 \desinglequotelinestartoff
 \desinglequotescloseoff}
    \DeclareOption{de}{
-\AtBeginDocument{\desmartquotes}
+\AtBeginDocument{
+\frsmartquotes
+\frdumbquotes
+\smartquotes
+\dumbquotes\dumbquotes
+\desmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 }
    \end{minted} 
@@ -1348,7 +1353,7 @@ firstnumber=last
 \frsinglequotelinestartoff
 \frsinglequotescloseoff}
    \DeclareOption{fr}{
-\AtBeginDocument{\desmartquotes\dedumbquotes\smartquotes\dumbquotes\frsmartquotes}
+\AtBeginDocument{\desmartquotes\dedumbquotes\smartquotes\dumbquotes\dumbquotes\frsmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 
 }
@@ -1376,6 +1381,10 @@ firstnumber=last
 
 \end{minted}
 \section{Version History}
+\subsection{\texttt{1.0.1}}
+
+\ttfamily 30 August 2022: Further corrections to bug preventing non-English usage
+
 \subsection{\texttt{1.0.1}}
 
 \ttfamily 28 August 2022: Change bug preventing non-English usage
