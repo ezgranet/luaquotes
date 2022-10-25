@@ -50,7 +50,11 @@ Don\sqoneright t!\sqoneright%
 
 \end{tabular}
 \end{center}
+
 \section{Smart quotes}
+
+
+
 \subsection{Options}
  The default option, for English quotation marks, is called by:
    \begin{minted}[
@@ -77,6 +81,23 @@ breaklines,
 \usepackage[fr]{luaquotes} %French
 \usepackage[de]{luaquotes} % German
 \end{minted}
+\subsubsection{English Features}
+The English features are designed to smartly recognise English punctuation:
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{ccc}
+\ttfamily Feature & User input & Output\\
+ Double Quotes &  \LARGE\texttt{"Salut!"}%
+& 
+\LARGE "Hello"\\
+Single Quotes& \LARGE\texttt{'Hello!'}%
+&  \LARGE 'Hello' \\
+Contractions & \LARGE \texttt{Don't} & \LARGE Don't\\
+Elision & \LARGE\texttt{'ello} & \LARGE 'ello  \\
+
+
+\end{tabular}
+\end{center}
 
 \subsubsection{French option}
 The French option produces the following output, including the extra space around punctuation prescribed by French typography:
@@ -255,9 +276,9 @@ breaklines,
 firstnumber=last
 ]
 {latex}
-\def\luaquotesversionnumber{1.0.2}
-\ProvidesPackage{luaquotes}
-  [2022/08/01\luaquotesversionnumber smart quotes with lua]
+\def\luaquotesversionnumber{1.1}
+\ProvidesPackage{dev-lua}
+  [2022/10/25\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
 % !TeX encoding = utf8
 % This work may be distributed and/or modified under the 
@@ -474,7 +495,39 @@ firstnumber=last
 ]
 {latex}
         }
-         
+ \luaexec{
+     \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+
+ 
+function abbrevsingle ( s )
+           return ( s:gsub ( " '(..-) " , " ’\%1 " ) )
+         end
+         \end{minted}
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+
+         }        
+
+        
 \luaexec{
    \end{minted} 
     \begin{minted}[
@@ -579,6 +632,74 @@ firstnumber=last
 ]
 {latex}
 }}
+\newcommand\abbrevsingleon{\directlua{
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+
+
+luatexbase.add_to_callback (
+   "process_input_buffer" , 
+   abbrevsingle , 
+   "abbrevsingle" )
+     \end{minted}
+  \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+
+   
+   }}
+\newcommand\abbrevsingleoff{\directlua{
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+
+luatexbase.remove_from_callback (
+   "process_input_buffer" , 
+   "abbrevsingle" )
+     \end{minted}
+  \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+
+   }}
+
+
+
 \newcommand\singlequotelinestarton{\directlua{
    \end{minted} 
     \begin{minted}[
@@ -685,8 +806,11 @@ firstnumber=last
    \newcommand{\smartquotes}{%
 \doublequoteson%
 \singlequotelinestarton%
+\abbrevsingleon%
 \singlequoteson}
-   \newcommand{\dumbquotes}{\doublequotesoff
+   \newcommand{\dumbquotes}{
+   \doublequotesoff
+\abbrevsingleoff
    \singlequotelinestartoff
    \singlequotesoff}
     \end{minted} 
@@ -1381,16 +1505,23 @@ firstnumber=last
 
 \end{minted}
 \section{Version History}
-\subsection{\texttt{1.0.1}}
+
+\subsection{\normalfont\texttt{1.1.0}}
+\ttfamily 25 October 2022: Added support for elision
+
+
+\subsection{\normalfont\texttt{1.0.1}}
+
+
 
 \ttfamily 30 August 2022: Further corrections to bug preventing non-English usage
 
-\subsection{\texttt{1.0.1}}
+\subsection{\normalfont\texttt{1.0.1}}
 
 \ttfamily 28 August 2022: Change bug preventing non-English usage
 
 
-\subsection{\texttt{1.0.0}}
+\subsection{\normalfont\texttt{1.0.0}}
 
 \ttfamily 21 August 2022: Package creation
 

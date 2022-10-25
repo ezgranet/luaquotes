@@ -1,6 +1,6 @@
 luaquotes - smart quotes with lua
 
-version: 1.0.2
+version: 1.1.0
 
 This package automatically creates smart quotes using lua filters and provides auxiliary commands for typesetting specific lua punctuation
 
@@ -12,6 +12,7 @@ For suggestions, feature requests, and bug reports, please use the project's
 GitHub site:  https://github.com/ezgranet/luaquotes
 
 Version history: 
+25/10/2022—support for elision
 30/08/2022—resolving bug with language versions
 28/08/2022—resolving bug with language versions
 24/08/2022 —package creation

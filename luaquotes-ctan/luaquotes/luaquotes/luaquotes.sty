@@ -1,6 +1,6 @@
-\def\luaquotesversionnumber{1.0.2}
-\ProvidesPackage{luaquotes}
-  [2022/08/30\luaquotesversionnumber smart quotes with lua]
+\def\luaquotesversionnumber{1.1}
+\ProvidesPackage{dev-lua}
+  [2022/10/25\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
 % !TeX encoding = utf8
 % This work may be distributed and/or modified under the 
@@ -92,6 +92,13 @@ function doublequotes ( s )
            return (s:gsub ("^'","‘" )  )
         end}
          
+
+ 
+\luaexec{
+function abbrevsingle ( s )
+           return ( s:gsub ( " '(..-) " , " ’\%1 " ) )
+         end}        
+
 \luaexec{function singlequotes ( s )
            return ( s:gsub ( " '"," ‘" ) )
          end}
@@ -107,6 +114,14 @@ function doublequotes ( s )
 \newcommand\doublequotesoff{\directlua{luatexbase.remove_from_callback (
    "process_input_buffer" , 
    "doublequotes" )}}
+\newcommand\abbrevsingleon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , 
+   abbrevsingle , 
+   "abbrevsingle" )}}
+\newcommand\abbrevsingleoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , 
+   "abbrevsingle" )}}
+
 \newcommand\singlequotelinestarton{\directlua{
 luatexbase.add_to_callback (
    "process_input_buffer" , singlequotelinestart , "singlequotelinestart" )
@@ -129,9 +144,11 @@ luatexbase.add_to_callback (
    \newcommand{\smartquotes}{%
 \doublequoteson%
 \singlequotelinestarton%
+\abbrevsingleon%
 \singlequoteson}
    \newcommand{\dumbquotes}{
    \doublequotesoff
+\abbrevsingleoff
    \singlequotelinestartoff
    \singlequotesoff}
    
