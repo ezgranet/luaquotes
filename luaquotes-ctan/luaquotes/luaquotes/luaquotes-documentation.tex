@@ -93,9 +93,6 @@ The English features are designed to smartly recognise English punctuation:
 Single Quotes& \LARGE\texttt{'Hello!'}%
 &  \LARGE 'Hello' \\
 Contractions & \LARGE \texttt{Don't} & \LARGE Don't\\
-Elision & \LARGE\texttt{'ello} & \LARGE 'ello  \\
-
-
 \end{tabular}
 \end{center}
 
@@ -509,9 +506,9 @@ firstnumber=last
 {lua}
 
  
-function abbrevsingle ( s )
-           return ( s:gsub ( " '(..-) " , " ’\%1 " ) )
-         end
+%function abbrevsingle ( s )
+%           return ( s:gsub ( " '(..-) " , " ’\%1 " ) )
+%         end
          \end{minted}
     \begin{minted}[
 frame=lines,
@@ -632,7 +629,7 @@ firstnumber=last
 ]
 {latex}
 }}
-\newcommand\abbrevsingleon{\directlua{
+%\newcommand\abbrevsingleon{\directlua{
    \end{minted} 
     \begin{minted}[
 frame=lines,
@@ -646,11 +643,11 @@ firstnumber=last
 ]
 {lua}
 
-
-luatexbase.add_to_callback (
-   "process_input_buffer" , 
-   abbrevsingle , 
-   "abbrevsingle" )
+%
+%luatexbase.add_to_callback (
+%   "process_input_buffer" , 
+%   abbrevsingle , 
+%   "abbrevsingle" )
      \end{minted}
   \begin{minted}[
 frame=lines,
@@ -665,8 +662,8 @@ firstnumber=last
 {latex}
 
    
-   }}
-\newcommand\abbrevsingleoff{\directlua{
+%   }}
+%\newcommand\abbrevsingleoff{\directlua{
    \end{minted} 
     \begin{minted}[
 frame=lines,
@@ -680,9 +677,9 @@ firstnumber=last
 ]
 {lua}
 
-luatexbase.remove_from_callback (
-   "process_input_buffer" , 
-   "abbrevsingle" )
+%luatexbase.remove_from_callback (
+%   "process_input_buffer" , 
+%   "abbrevsingle" )
      \end{minted}
   \begin{minted}[
 frame=lines,
@@ -696,7 +693,7 @@ firstnumber=last
 ]
 {latex}
 
-   }}
+%   }}
 
 
 
@@ -806,11 +803,11 @@ firstnumber=last
    \newcommand{\smartquotes}{%
 \doublequoteson%
 \singlequotelinestarton%
-\abbrevsingleon%
+%\abbrevsingleon%
 \singlequoteson}
    \newcommand{\dumbquotes}{
    \doublequotesoff
-\abbrevsingleoff
+%\abbrevsingleoff
    \singlequotelinestartoff
    \singlequotesoff}
     \end{minted} 
@@ -1505,6 +1502,8 @@ firstnumber=last
 
 \end{minted}
 \section{Version History}
+\subsection{\normalfont\texttt{1.2.1}}
+\ttfamily Suspended automatic elision support due to implementation issues
 
 \subsection{\normalfont\texttt{1.1.0}}
 \ttfamily 25 October 2022: Added support for elision
