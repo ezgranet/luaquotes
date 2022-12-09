@@ -80,6 +80,7 @@ breaklines,
 {latex}
 \usepackage[fr]{luaquotes} %French
 \usepackage[de]{luaquotes} % German
+\usepackage[degm]{luaquotes} % German with French-style quotes
 \end{minted}
 \subsubsection{English Features}
 The English features are designed to smartly recognise English punctuation:
@@ -123,6 +124,20 @@ The German option produces the following outpu:
 
 \end{tabular}
 \end{center}
+\subsubsection{The German (\texttt{degm}) option}
+The German (\texttt{degm}) option produces the following output:
+
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{cc}
+\ttfamily User input &Output\\
+\LARGE\texttt{"Hallo!"}%
+&  \LARGE \degmdouble Hallo!\degmtr\\
+\LARGE\texttt{'Hallo!'}%
+&  \LARGE \degmsingle Hallo!\desgmtr\\
+
+\end{tabular}
+\end{center}
 
 
 
@@ -140,6 +155,7 @@ breaklines,
 \dumbquotes %English
 \frdumbquotes %French
 \dedumbquotes %German
+\degmdumbquotes %German with French-style quotes
 \end{minted}
 
 The following commands re-activate the smart quotes function:
@@ -155,6 +171,7 @@ breaklines,
 \smartquotes %English
 \frsmartquotes %French
 \desmartquotes % German
+\degmsmartquotes % German with French-style quotes
 \end{minted}
 
 A limitation on the (de-)activation of the package is that the Lua filters will not deactivate within the same paragraph, so the function can only be changed across paragraphs.
@@ -201,10 +218,12 @@ Single low quote & \ttfamily U+201A & \verb!\desingle! & \Huge\desingle\thebox\\
 		Right double quote & \ttfamily U+201D & \verb!\sqtworight! & \Huge\thebox\sqtworight\\
 		Left guillemet [w/ space]& \ttfamily U+00AB & \verb!\glmtl! & \Huge\glmtl\thebox\\
 Right guillemet [w/ space]& \ttfamily U+00BB & \verb!\glmtr! & \Huge\thebox\glmtr\\
-Single left guillemet [w/ space]& \ttfamily U+2039 & \verb!\sglmtl! & \Huge\sglmtl\thebox\\
-
-Single right guillemet [w/ space]& \ttfamily U+203A & \verb!\sglmtr! & \Huge\thebox\sglmtr\\
-
+		\texttt{degm} left guillemet & \ttfamily U+00BB & \verb!\degmtl! & \Huge\degmtl\thebox\\
+		\texttt{degm} right guillemet & \ttfamily U+00AB & \verb!\degmtr! & \Huge\thebox\degmtr\\
+		Single left guillemet [w/ space]& \ttfamily U+2039 & \verb!\sglmtl! & \Huge\sglmtl\thebox\\
+		Single right guillemet [w/ space]& \ttfamily U+203A & \verb!\sglmtr! & \Huge\thebox\sglmtr\\
+		\texttt{degm} single left guillemet & \ttfamily U+203A & \verb!\desgmtl! & \Huge\desgmtl\thebox\\
+		\texttt{degm} single right guillemet & \ttfamily U+2039 & \verb!\desgmtr! & \Huge\thebox\desgmtr\\
 
 \end{longtable}
 	\end{center}
@@ -829,7 +848,10 @@ firstnumber=last
 \frsmartquotes
 \frdumbquotes
 \desmartquotes
-\dedumbquotes\smartquotes}
+\dedumbquotes
+\degmsmartquotes
+\degmdumbquotes
+\smartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
     }
 
@@ -1195,6 +1217,283 @@ firstnumber=last
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 }
    \end{minted} 
+    \subsection{The German with French-style quotes (\texttt{degm}) option}
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SCHÖNERES DEUTSCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\luaexec{
+    \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+function degmdoublequotes ( s )
+           return ( s:gsub ( '"(..-)"' , "»\%1«" ) )
+         end
+             \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+         }
+\luaexec{   
+ \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+function degmsinglequotelinestart ( s )
+           return (s:gsub ("^'","›" )  )
+        end  
+          \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+        }
+\luaexec{  
+          \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+function degmsinglequotesclose( s )
+return ( s:gsub ( " '(..-)'", " ‚\%1‹" ) )
+         end
+                     \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+         }
+
+%% Two utility macros to activate/deactivate the Lua function:
+\newcommand\degmdoublequoteson{\directlua{
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+luatexbase.add_to_callback (
+   "process_input_buffer" , degmdoublequotes , "degmdoublequotes" )
+      \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+   }}
+\newcommand\degmdoublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "degmdoublequotes" )
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+}}
+\newcommand\degmsinglequotelinestarton{\directlua{
+\end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+luatexbase.add_to_callback (
+   "process_input_buffer" , degmsinglequotelinestart , "degmsinglequotelinestart" )\end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+   }}
+\newcommand\degmsinglequotelinestartoff{\directlua{
+\end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+luatexbase.remove_from_callback (
+   "process_input_buffer" , "degmsinglequotelinestart" )
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+   }}
+\newcommand\degmsinglequotescloseon{\directlua{
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+   luatexbase.add_to_callback (
+   "process_input_buffer" , degmsinglequotesclose , "degmsinglequotesclose" )
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+   }}
+\newcommand\degmsinglequotescloseoff{\directlua{
+\end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{lua}
+luatexbase.remove_from_callback (
+   "process_input_buffer" , "degmsinglequotesclose" )
+   \end{minted} 
+    \begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos,
+breaklines,
+firstnumber=last
+]
+{latex}
+   }}
+   \newcommand{\degmsmartquotes}{\degmdoublequoteson
+\degmsinglequotelinestarton
+\degmsinglequotescloseon}
+   \newcommand{\degmdumbquotes}{\degmdoublequotesoff
+\degmsinglequotelinestartoff
+\degmsinglequotescloseoff}
+   \DeclareOption{degm}{
+\AtBeginDocument{
+\frsmartquotes
+\frdumbquotes
+\smartquotes
+\dumbquotes\dumbquotes
+\degmsmartquotes}
+\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
+}
+   \end{minted} 
    \subsection{The French option}
     \begin{minted}[
 frame=lines,
@@ -1502,6 +1801,9 @@ firstnumber=last
 
 \end{minted}
 \section{Version History}
+\subsection{\normalfont\texttt{1.2.2}}
+\ttfamily Added the "degm" option
+
 \subsection{\normalfont\texttt{1.2.1}}
 \ttfamily Suspended automatic elision support due to implementation issues
 
