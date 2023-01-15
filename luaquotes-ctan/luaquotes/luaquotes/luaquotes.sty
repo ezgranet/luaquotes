@@ -1,6 +1,6 @@
-\def\luaquotesversionnumber{1.2.2}
+\def\luaquotesversionnumber{1.3.0}
 \ProvidesPackage{luaquotes}
-  [2022/12/09\luaquotesversionnumber smart quotes with lua]
+  [2023/15/15\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
 % !TeX encoding = utf8
 % This work may be distributed and/or modified under the 
@@ -102,6 +102,87 @@ function doublequotes ( s )
 \luaexec{function singlequotes ( s )
            return ( s:gsub ( " '"," ‘" ) )
          end}
+         
+         
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sqoneleft}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‘}}
+
+\luaexec{function psinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(\sqoneleft]] ) )
+         end}
+
+\newcommand\singlequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , psinglequotes , "psinglequotes" )
+   }}
+\newcommand\singlequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "psinglequotes" )}}
+
+      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DE parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\sqoneleft}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‘}}
+
+\luaexec{function depsinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(‚]] ) )
+         end}
+
+\newcommand\desinglequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , depsinglequotes , "depsinglequotes" )
+   }}
+\newcommand\desinglequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "depsinglequotes" )}}
+
+\luaexec{function depsinglequotesclose ( s )
+           return ( s:gsub ( "'\%)",[[\sqoneleft)]] ) )
+         end}
+
+\newcommand\desinglequotespcloseon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , depsinglequotesclose , "depsinglequotesclose" )
+   }}
+\newcommand\desinglequotespcloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "depsinglequotesclose" )}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FR Parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sglmtlp}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‹\hskip .16667em}}
+\newcommand{\sglmtrp}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\hskip .16667em›}}
+
+\luaexec{function frpsinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(\sglmtlp]] ) )
+         end}
+\luaexec{function frpsinglequotesclose ( s )
+           return ( s:gsub ( "'\%)",[[\sglmtrp)]] ) )
+         end}
+
+\newcommand\frsinglequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , frpsinglequotes , "frpsinglequotes" )
+   }}
+\newcommand\frsinglequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frpsinglequotes" )}}
+\newcommand\frsinglequotespcloseon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , frpsinglequotesclose , "frpsinglequotesclose" )
+   }}
+\newcommand\frsinglequotespcloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frpsinglequotesclose" )}}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % activation and deactivation
@@ -145,12 +226,15 @@ luatexbase.add_to_callback (
 \doublequoteson%
 \singlequotelinestarton%
 % \abbrevsingleon%
-\singlequoteson}
+\singlequoteson
+\singlequotespon}
    \newcommand{\dumbquotes}{
    \doublequotesoff
 % \abbrevsingleoff
    \singlequotelinestartoff
-   \singlequotesoff}
+   \singlequotesoff
+   \singlequotespoff
+   }
    
        \DeclareOption{en}{
 \AtBeginDocument{\frsmartquotes\frdumbquotes\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes}
@@ -224,11 +308,12 @@ luatexbase.add_to_callback (
 \newcommand{\sqtworight}{{\addfontfeature{RawFeature={-qtbye,-tlig}}”}}
 \newcommand{\sqoneright}{{\addfontfeature{RawFeature={-qtbye,-tlig}}’}}
 \newcommand{\apost}{{\addfontfeature{RawFeature={-qtbye,-tlig}}’}}
-\newcommand{\sqoneleft}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‘}}
+%sqoneleft  command moved because order mattered
 \newcommand{\glmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}«\,}}
 \newcommand{\glmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\,»}}
 \newcommand{\sglmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‹\,}}
 \newcommand{\sglmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\,›}}
+
 \newcommand{\degmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}»}}
 \newcommand{\degmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}«}}
 \newcommand{\desgmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}›}}
@@ -263,10 +348,16 @@ return ( s:gsub ( " '(..-)'", " ‚\%1`" ) )
    "process_input_buffer" , "desinglequotesclose" )}}
    \newcommand{\desmartquotes}{\dedoublequoteson
 \desinglequotelinestarton
-\desinglequotescloseon}
+\desinglequotescloseon
+\desinglequotespon
+\desinglequotespcloseon
+}
    \newcommand{\dedumbquotes}{\dedoublequotesoff
 \desinglequotelinestartoff
-\desinglequotescloseoff}
+\desinglequotescloseoff
+\desinglequotespoff
+\desinglequotespcloseoff
+}
    \DeclareOption{de}{
 \AtBeginDocument{
 \frsmartquotes
@@ -352,13 +443,17 @@ return ( s:gsub ( " '(..-)'", " ‹\\,\%1\\,›" ) )
 \newcommand\frsinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
    "process_input_buffer" , "frsinglequotesclose" )}}
    \newcommand{\frsmartquotes}{\frdoublequoteson
+   \frsinglequotespon
+   \frsinglequotespcloseon
 \frsinglequotelinestarton
 \frsinglequotescloseon}
    \newcommand{\frdumbquotes}{\frdoublequotesoff
+   \frsinglequotespoff
+   \frsinglequotespcloseoff
 \frsinglequotelinestartoff
 \frsinglequotescloseoff}
    \DeclareOption{fr}{
-\AtBeginDocument{\desmartquotes\dedumbquotes\degmsmartquotes\degmdumpquotes\smartquotes\dumbquotes\dumbquotes\frsmartquotes}
+\AtBeginDocument{\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes\dumbquotes\dumbquotes\frsmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 
 

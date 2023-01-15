@@ -283,46 +283,31 @@ For certain Polynesian languages, a letter called the \okina Okina is used; whil
 	
 \begin{minted}[
 frame=lines,
-framesep=2mm,
 baselinestretch=1.2,
-bgcolor=LightGray,
 fontsize=\footnotesize,
 linenos,
 breaklines,
 firstnumber=last
 ]
 {latex}
-\def\luaquotesversionnumber{1.1}
-\ProvidesPackage{dev-lua}
-  [2022/10/25\luaquotesversionnumber smart quotes with lua]
+
+\def\luaquotesversionnumber{1.3.0}
+\ProvidesPackage{luaquotes}
+  [2023/15/15\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
 % !TeX encoding = utf8
 % This work may be distributed and/or modified under the 
-% conditions of the LaTeX Project Public License, either version 1.3 
+% conditions of the LaTeX Project Public License, either version 1.3c
 % of this license or (at your option) any later version.
 % The latest version of this license is in
 %   http://www.latex-project.org/lppl.txt
-% and version 1.3 or later is part of all distributions of LaTeX 
+% and version 1.3c or later is part of all distributions of LaTeX 
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
 %
 % The Current Maintainer of this work is Elijah Z Granet
-\end{minted}
 
-\subsection{LuaTeX check}
-
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % to show the package only works with Lua
@@ -338,21 +323,6 @@ firstnumber=last
       {You are using XeTeX but this package only works 
       \MessageBreak with LuaTeX}{}
 }\fi\fi
-\end{minted}
-
-\subsection{Dependencies}
-
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Dependency
@@ -368,37 +338,12 @@ firstnumber=last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
   \RequirePackage{fontspec}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \end{minted}
-  
-  \subsection{Avoiding smart quotes in monospace}
-  
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % removing the effects for monospace
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{luacode}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
 local uchar = unicode.utf8.char
   fonts.handlers.otf.addfeature{
     name = "qtbye",
@@ -413,32 +358,8 @@ local uchar = unicode.utf8.char
 ‹ = 0x0027,
 › = 0x0027
  },
-  }\end{minted}
-  \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
+  }
   \end{luacode}
-  \end{minted}
-  \subsection{Quote replacement functions}
-  \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -450,371 +371,146 @@ firstnumber=last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\luaexec{\end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
+\luaexec{
 function doublequotes ( s )
            return ( s:gsub ( '"(..-)"' , "“\%1”" ) )
-         end\end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}
+         end}
 
          %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Assuming ' at the start of the line means an opening quotation mark not an apostrophe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\luaexec{\end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function singlequotelinestart ( s )
+\luaexec{function singlequotelinestart ( s )
            return (s:gsub ("^'","‘" )  )
-        end
-           \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-        }
- \luaexec{
-     \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
+        end}
+         
 
  
-%function abbrevsingle ( s )
-%           return ( s:gsub ( " '(..-) " , " ’\%1 " ) )
-%         end
-         \end{minted}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
+% \luaexec{
+% function abbrevsingle ( s )
+%            return ( s:gsub ( " '(..-) " , " ’\%1 " ) )
+%          end}        
 
-         }        
-
-        
-\luaexec{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function singlequotes ( s )
+\luaexec{function singlequotes ( s )
            return ( s:gsub ( " '"," ‘" ) )
-         end\end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}
-\end{minted}
-\subsection{Activation commands}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
+         end}
+         
+         
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sqoneleft}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‘}}
+
+\luaexec{function psinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(\sqoneleft]] ) )
+         end}
+
+\newcommand\singlequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , psinglequotes , "psinglequotes" )
+   }}
+\newcommand\singlequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "psinglequotes" )}}
+
+      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DE parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\sqoneleft}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‘}}
+
+\luaexec{function depsinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(‚]] ) )
+         end}
+
+\newcommand\desinglequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , depsinglequotes , "depsinglequotes" )
+   }}
+\newcommand\desinglequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "depsinglequotes" )}}
+
+\luaexec{function depsinglequotesclose ( s )
+           return ( s:gsub ( "'\%)",[[\sqoneleft)]] ) )
+         end}
+
+\newcommand\desinglequotespcloseon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , depsinglequotesclose , "depsinglequotesclose" )
+   }}
+\newcommand\desinglequotespcloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "depsinglequotesclose" )}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FR Parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sglmtlp}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‹\hskip .16667em}}
+\newcommand{\sglmtrp}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\hskip .16667em›}}
+
+\luaexec{function frpsinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(\sglmtlp]] ) )
+         end}
+\luaexec{function frpsinglequotesclose ( s )
+           return ( s:gsub ( "'\%)",[[\sglmtrp)]] ) )
+         end}
+
+\newcommand\frsinglequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , frpsinglequotes , "frpsinglequotes" )
+   }}
+\newcommand\frsinglequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frpsinglequotes" )}}
+\newcommand\frsinglequotespcloseon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , frpsinglequotesclose , "frpsinglequotesclose" )
+   }}
+\newcommand\frsinglequotespcloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frpsinglequotesclose" )}}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % activation and deactivation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\doublequoteson{\directlua{
-\end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-
-luatexbase.add_to_callback (
-   "process_input_buffer" , doublequotes , "doublequotes" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\doublequotesoff{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
+\newcommand\doublequoteson{\directlua{luatexbase.add_to_callback (
    "process_input_buffer" , 
-   "doublequotes" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}}
-%\newcommand\abbrevsingleon{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-
-%
-%luatexbase.add_to_callback (
-%   "process_input_buffer" , 
-%   abbrevsingle , 
-%   "abbrevsingle" )
-     \end{minted}
-  \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-
-   
-%   }}
-%\newcommand\abbrevsingleoff{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-
-%luatexbase.remove_from_callback (
-%   "process_input_buffer" , 
-%   "abbrevsingle" )
-     \end{minted}
-  \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-
-%   }}
-
-
+   doublequotes , 
+   "doublequotes" )}}
+\newcommand\doublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , 
+   "doublequotes" )}}
+% \newcommand\abbrevsingleon{\directlua{luatexbase.add_to_callback (
+%    "process_input_buffer" , 
+%    abbrevsingle , 
+%    "abbrevsingle" )}}
+% \newcommand\abbrevsingleoff{\directlua{luatexbase.remove_from_callback (
+%    "process_input_buffer" , 
+%    "abbrevsingle" )}}
 
 \newcommand\singlequotelinestarton{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
 luatexbase.add_to_callback (
    "process_input_buffer" , singlequotelinestart , "singlequotelinestart" )
-  \end{minted}
-  \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
    }}
-\newcommand\singlequotelinestartoff{\directlua{ \end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
+\newcommand\singlequotelinestartoff{\directlua{
 luatexbase.remove_from_callback (
    "process_input_buffer" , "singlequotelinestart" )
-   \end{minted}
-   \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
    }}
 \newcommand\singlequoteson{\directlua{
 luatexbase.add_to_callback (
-   "process_input_buffer" , singlequotes , "singlequotes" ) \end{minted} 
-   \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
+   "process_input_buffer" , singlequotes , "singlequotes" )
    }}
-\newcommand\singlequotesoff{\directlua{
-\end{minted}
-\begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "singlequotes" ) 
-   \end{minted}
-   \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}}
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\singlequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "singlequotes" )}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % global functions, useful for things like this
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -822,52 +518,22 @@ firstnumber=last
    \newcommand{\smartquotes}{%
 \doublequoteson%
 \singlequotelinestarton%
-%\abbrevsingleon%
-\singlequoteson}
+% \abbrevsingleon%
+\singlequoteson
+\singlequotespon}
    \newcommand{\dumbquotes}{
    \doublequotesoff
-%\abbrevsingleoff
+% \abbrevsingleoff
    \singlequotelinestartoff
-   \singlequotesoff}
-    \end{minted} 
-    \subsection{English option}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-
-           \DeclareOption{en}{
-\AtBeginDocument{
-\frsmartquotes
-\frdumbquotes
-\desmartquotes
-\dedumbquotes
-\degmsmartquotes
-\degmdumbquotes
-\smartquotes}
+   \singlequotesoff
+   \singlequotespoff
+   }
+   
+       \DeclareOption{en}{
+\AtBeginDocument{\frsmartquotes\frdumbquotes%
+\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
     }
-
-    \end{minted} 
-    \subsection{Auxiliary punctuation}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -892,6 +558,8 @@ firstnumber=last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\desingle}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\symbol{"201A}}}
 \newcommand{\dedouble}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\symbol{"201E}}}
+\newcommand{\degmsingle}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\symbol{"203A}}}
+\newcommand{\degmdouble}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\symbol{"00BB}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % backtick
@@ -934,279 +602,56 @@ firstnumber=last
 \newcommand{\sqtworight}{{\addfontfeature{RawFeature={-qtbye,-tlig}}”}}
 \newcommand{\sqoneright}{{\addfontfeature{RawFeature={-qtbye,-tlig}}’}}
 \newcommand{\apost}{{\addfontfeature{RawFeature={-qtbye,-tlig}}’}}
-\newcommand{\sqoneleft}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‘}}
+%sqoneleft  command moved because order mattered
 \newcommand{\glmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}«\,}}
 \newcommand{\glmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\,»}}
 \newcommand{\sglmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‹\,}}
 \newcommand{\sglmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}\,›}}
-    \end{minted} 
-    \subsection{The German option}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
 
+\newcommand{\degmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}»}}
+\newcommand{\degmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}«}}
+\newcommand{\desgmtl}{{\addfontfeature{RawFeature={-qtbye,-tlig}}›}}
+\newcommand{\desgmtr}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‹}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEUTSCH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\luaexec{
-    \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function dedoublequotes ( s )
+\luaexec{function dedoublequotes ( s )
            return ( s:gsub ( '"(..-)"' , "„\%1“" ) )
-         end
-             \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-         }
-\luaexec{   
- \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function desinglequotelinestart ( s )
+         end}
+\luaexec{function desinglequotelinestart ( s )
            return (s:gsub ("^'","‚" )  )
-        end  
-          \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-        }
-\luaexec{  
-          \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function desinglequotesclose( s )
+        end}
+\luaexec{function desinglequotesclose( s )
 return ( s:gsub ( " '(..-)'", " ‚\%1`" ) )
-         end
-                     \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-         }
+         end}
 
 %% Two utility macros to activate/deactivate the Lua function:
-\newcommand\dedoublequoteson{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.add_to_callback (
-   "process_input_buffer" , dedoublequotes , "dedoublequotes" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
+\newcommand\dedoublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , dedoublequotes , "dedoublequotes" )}}
 \newcommand\dedoublequotesoff{\directlua{luatexbase.remove_from_callback (
-   "process_input_buffer" , "dedoublequotes" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}}
-\newcommand\desinglequotelinestarton{\directlua{
-\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.add_to_callback (
-   "process_input_buffer" , desinglequotelinestart , "desinglequotelinestart" )\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\desinglequotelinestartoff{\directlua{
-\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "desinglequotelinestart" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\desinglequotescloseon{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-   luatexbase.add_to_callback (
-   "process_input_buffer" , desinglequotesclose , "desinglequotesclose" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\desinglequotescloseoff{\directlua{
-\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "desinglequotesclose" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
+   "process_input_buffer" , "dedoublequotes" )}}
+\newcommand\desinglequotelinestarton{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , desinglequotelinestart , "desinglequotelinestart" )}}
+\newcommand\desinglequotelinestartoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "desinglequotelinestart" )}}
+   \newcommand\desinglequotescloseon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , desinglequotesclose , "desinglequotesclose" )}}
+\newcommand\desinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "desinglequotesclose" )}}
    \newcommand{\desmartquotes}{\dedoublequoteson
 \desinglequotelinestarton
-\desinglequotescloseon}
+\desinglequotescloseon
+\desinglequotespon
+\desinglequotespcloseon
+}
    \newcommand{\dedumbquotes}{\dedoublequotesoff
 \desinglequotelinestartoff
-\desinglequotescloseoff}
+\desinglequotescloseoff
+\desinglequotespoff
+\desinglequotespcloseoff
+}
    \DeclareOption{de}{
 \AtBeginDocument{
 \frsmartquotes
@@ -1216,268 +661,35 @@ firstnumber=last
 \desmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 }
-   \end{minted} 
-    \subsection{The German with French-style quotes (\texttt{degm}) option}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SCHÖNERES DEUTSCH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\luaexec{
-    \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function degmdoublequotes ( s )
+\luaexec{function degmdoublequotes ( s )
            return ( s:gsub ( '"(..-)"' , "»\%1«" ) )
-         end
-             \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-         }
-\luaexec{   
- \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function degmsinglequotelinestart ( s )
+         end}
+\luaexec{function degmsinglequotelinestart ( s )
            return (s:gsub ("^'","›" )  )
-        end  
-          \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-        }
-\luaexec{  
-          \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function degmsinglequotesclose( s )
+        end}
+\luaexec{function degmsinglequotesclose( s )
 return ( s:gsub ( " '(..-)'", " ‚\%1‹" ) )
-         end
-                     \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-         }
+         end}
 
 %% Two utility macros to activate/deactivate the Lua function:
-\newcommand\degmdoublequoteson{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.add_to_callback (
-   "process_input_buffer" , degmdoublequotes , "degmdoublequotes" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
+\newcommand\degmdoublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , degmdoublequotes , "degmdoublequotes" )}}
 \newcommand\degmdoublequotesoff{\directlua{luatexbase.remove_from_callback (
-   "process_input_buffer" , "degmdoublequotes" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}}
-\newcommand\degmsinglequotelinestarton{\directlua{
-\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.add_to_callback (
-   "process_input_buffer" , degmsinglequotelinestart , "degmsinglequotelinestart" )\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\degmsinglequotelinestartoff{\directlua{
-\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "degmsinglequotelinestart" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\degmsinglequotescloseon{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-   luatexbase.add_to_callback (
-   "process_input_buffer" , degmsinglequotesclose , "degmsinglequotesclose" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\degmsinglequotescloseoff{\directlua{
-\end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "degmsinglequotesclose" )
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
+   "process_input_buffer" , "degmdoublequotes" )}}
+\newcommand\degmsinglequotelinestarton{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , degmsinglequotelinestart , "degmsinglequotelinestart" )}}
+\newcommand\degmsinglequotelinestartoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "degmsinglequotelinestart" )}}
+   \newcommand\degmsinglequotescloseon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" , degmsinglequotesclose , "degmsinglequotesclose" )}}
+\newcommand\degmsinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "degmsinglequotesclose" )}}
    \newcommand{\degmsmartquotes}{\degmdoublequoteson
 \degmsinglequotelinestarton
 \degmsinglequotescloseon}
@@ -1493,303 +705,57 @@ firstnumber=last
 \degmsmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 }
-   \end{minted} 
-   \subsection{The French option}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Français
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\luaexec{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function frdoublequotes ( s )
+\luaexec{function frdoublequotes ( s )
            return ( s:gsub ( '"(..-)"' , "«\\,\%1\\,»" ) )
-         end
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}
-\luaexec{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function frsinglequotelinestart ( s )
+         end}
+
+
+\luaexec{function frsinglequotelinestart ( s )
            return (s:gsub ("^'","'" )  )
-        end   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}
-\luaexec{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-function frsinglequotesclose( s )
+        end}
+\luaexec{function frsinglequotesclose( s )
 return ( s:gsub ( " '(..-)'", " ‹\\,\%1\\,›" ) )
-         end
-            \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-         }
+         end}
+
 %% Two utility macros to activate/deactivate the Lua function:
-\newcommand\frdoublequoteson{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.add_to_callback (
-   "process_input_buffer" ,frdoublequotes , "frdoublequotes" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\frdoublequotesoff{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "frdoublequotes" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\frsinglequotelinestarton{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.add_to_callback (
-   "process_input_buffer" ,frsinglequotelinestart , "frsinglequotelinestart" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-\newcommand\frsinglequotelinestartoff{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "frsinglequotelinestart" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-   }}
-   \newcommand\frsinglequotescloseon{\directlua{
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-   luatexbase.add_to_callback (
-   "process_input_buffer" ,frsinglequotesclose , "frsinglequotesclose" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}}
-\newcommand\frsinglequotescloseoff{\directlua{
-   \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{lua}
-luatexbase.remove_from_callback (
-   "process_input_buffer" , "frsinglequotesclose" )
-      \end{minted} 
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
-}}
+\newcommand\frdoublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,frdoublequotes , "frdoublequotes" )}}
+\newcommand\frdoublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frdoublequotes" )}}
+\newcommand\frsinglequotelinestarton{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,frsinglequotelinestart , "frsinglequotelinestart" )}}
+\newcommand\frsinglequotelinestartoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frsinglequotelinestart" )}}
+   \newcommand\frsinglequotescloseon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,frsinglequotesclose , "frsinglequotesclose" )}}
+\newcommand\frsinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "frsinglequotesclose" )}}
+   \newcommand{\frsmartquotes}{\frdoublequoteson
+   \frsinglequotespon
+   \frsinglequotespcloseon
 \frsinglequotelinestarton
 \frsinglequotescloseon}
    \newcommand{\frdumbquotes}{\frdoublequotesoff
+   \frsinglequotespoff
+   \frsinglequotespcloseoff
 \frsinglequotelinestartoff
 \frsinglequotescloseoff}
    \DeclareOption{fr}{
-\AtBeginDocument{\desmartquotes\dedumbquotes\smartquotes\dumbquotes\dumbquotes\frsmartquotes}
+\AtBeginDocument{\desmartquotes\dedumbquotes%
+\degmsmartquotes\degmdumbquotes%
+\smartquotes\dumbquotes%
+\dumbquotes\frsmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 
+
 }
-   \end{minted} 
-   \subsection{Process Options}
-    \begin{minted}[
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize,
-linenos,
-breaklines,
-firstnumber=last
-]
-{latex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Default option is English
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1797,32 +763,37 @@ firstnumber=last
 \ExecuteOptions{en}% 
   \ProcessOptions*
 
-  
 
+
+  
 \end{minted}
 \section{Version History}
-\subsection{\normalfont\texttt{1.2.2}}
+\subsection*{\normalfont\texttt{1.3.0}}
+\ttfamily 15 January 2023 fixed single quotes and parentheses
+
+
+\subsection*{\normalfont\texttt{1.2.2}}
 \ttfamily Added the "degm" option
 
-\subsection{\normalfont\texttt{1.2.1}}
+\subsection*{\normalfont\texttt{1.2.1}}
 \ttfamily Suspended automatic elision support due to implementation issues
 
-\subsection{\normalfont\texttt{1.1.0}}
+\subsection*{\normalfont\texttt{1.1.0}}
 \ttfamily 25 October 2022: Added support for elision
 
 
-\subsection{\normalfont\texttt{1.0.1}}
+\subsection*{\normalfont\texttt{1.0.1}}
 
 
 
 \ttfamily 30 August 2022: Further corrections to bug preventing non-English usage
 
-\subsection{\normalfont\texttt{1.0.1}}
+\subsection*{\normalfont\texttt{1.0.1}}
 
 \ttfamily 28 August 2022: Change bug preventing non-English usage
 
 
-\subsection{\normalfont\texttt{1.0.0}}
+\subsection*{\normalfont\texttt{1.0.0}}
 
 \ttfamily 21 August 2022: Package creation
 
