@@ -68,7 +68,7 @@ breaklines,
 {latex}
 \usepackage{luaquotes}
 \end{minted}
-The French and German options, for those languages' punctuation, are called by the following respective commands.  
+The French, German, German (guillemets), and Swiss German options, for those languages' punctuation, are called by the following respective commands.  
 \begin{minted}[
 frame=lines,
 framesep=2mm,
@@ -80,7 +80,8 @@ breaklines,
 {latex}
 \usepackage[fr]{luaquotes} %French
 \usepackage[de]{luaquotes} % German
-\usepackage[degm]{luaquotes} % German with French-style quotes
+\usepackage[degm]{luaquotes} % German with guillemets
+\usepackage[dech]{luaquotes} %Swiss German
 \end{minted}
 \subsubsection{English Features}
 The English features are designed to smartly recognise English punctuation:
@@ -88,7 +89,7 @@ The English features are designed to smartly recognise English punctuation:
 \renewcommand{\arraystretch}{2}
 \begin{tabular}{ccc}
 \ttfamily Feature & User input & Output\\
- Double Quotes &  \LARGE\texttt{"Salut!"}%
+ Double Quotes &  \LARGE\texttt{"Hello!"}%
 & 
 \LARGE "Hello"\\
 Single Quotes& \LARGE\texttt{'Hello!'}%
@@ -124,8 +125,8 @@ The German option produces the following output:
 
 \end{tabular}
 \end{center}
-\subsubsection{The German (\texttt{degm}) option}
-The German (\texttt{degm}) option produces the following output:
+\subsubsection{The German (guillemets) option}
+The German (guillemets) option produces the following output:
 
 \begin{center}
 \renewcommand{\arraystretch}{2}
@@ -139,7 +140,20 @@ The German (\texttt{degm}) option produces the following output:
 \end{tabular}
 \end{center}
 
+\subsubsection{The Swiss German option}
+The Swiss German option produces the following output:
 
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{cc}
+\ttfamily User input &Output\\
+\LARGE\texttt{"Hallo!"}%
+&  \LARGE \glmtl Hallo!\glmtr\\
+\LARGE\texttt{'Hallo!'}%
+&  \LARGE \sglmtl Hallo!\sglmtr\\
+
+\end{tabular}
+\end{center}
 
 \subsection{Activation and De-activation}
 The package automatically activates the smart quotes function at the beginning of the document. To deactivate the smart quotes function within a document, the following commands are used:
@@ -291,9 +305,10 @@ firstnumber=last
 ]
 {latex}
 
-\def\luaquotesversionnumber{1.3.0}
+
+\def\luaquotesversionnumber{1.4.0}
 \ProvidesPackage{luaquotes}
-  [2023/15/15\luaquotesversionnumber smart quotes with lua]
+  [2023/01/25\luaquotesversionnumber smart quotes with lua]
   % !TeX program = lualatex                                   
 % !TeX encoding = utf8
 % This work may be distributed and/or modified under the 
@@ -475,6 +490,33 @@ luatexbase.add_to_callback (
 \newcommand\frsinglequotespcloseoff{\directlua{luatexbase.remove_from_callback (
    "process_input_buffer" , "frpsinglequotesclose" )}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DECH Parentheses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sglmtlpdech}{{\addfontfeature{RawFeature={-qtbye,-tlig}}‹}}
+\newcommand{\sglmtrpdech}{{\addfontfeature{RawFeature={-qtbye,-tlig}}›}}
+
+\luaexec{function dechpsinglequotes ( s )
+           return ( s:gsub ( "\%('",[[(\sglmtlpdech]]) )
+         end}
+\luaexec{function dechpsinglequotesclose ( s )
+           return ( s:gsub ( "'\%)",[[\sglmtrpdech)]]) )
+         end}
+
+\newcommand\dechsinglequotespon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , dechpsinglequotes , "dechpsinglequotes" )
+   }}
+\newcommand\dechsinglequotespoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "dechpsinglequotes" )}}
+\newcommand\dechsinglequotespcloseon{\directlua{
+luatexbase.add_to_callback (
+   "process_input_buffer" , dechpsinglequotesclose , "dechpsinglequotesclose" )
+   }}
+\newcommand\dechsinglequotespcloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "dechpsinglequotesclose" )}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -530,8 +572,7 @@ luatexbase.add_to_callback (
    }
    
        \DeclareOption{en}{
-\AtBeginDocument{\frsmartquotes\frdumbquotes%
-\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes}
+\AtBeginDocument{\dechsmartquotes\dechdumbquotes\frsmartquotes\frdumbquotes\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
     }
 
@@ -654,6 +695,7 @@ return ( s:gsub ( " '(..-)'", " ‚\%1`" ) )
 }
    \DeclareOption{de}{
 \AtBeginDocument{
+\dechsmartquotes\dechdumbquotes
 \frsmartquotes
 \frdumbquotes
 \smartquotes
@@ -698,6 +740,7 @@ return ( s:gsub ( " '(..-)'", " ‚\%1‹" ) )
 \degmsinglequotescloseoff}
    \DeclareOption{degm}{
 \AtBeginDocument{
+\dechsmartquotes\dechdumbquotes
 \frsmartquotes
 \frdumbquotes
 \smartquotes
@@ -747,14 +790,58 @@ return ( s:gsub ( " '(..-)'", " ‹\\,\%1\\,›" ) )
 \frsinglequotelinestartoff
 \frsinglequotescloseoff}
    \DeclareOption{fr}{
-\AtBeginDocument{\desmartquotes\dedumbquotes%
-\degmsmartquotes\degmdumbquotes%
-\smartquotes\dumbquotes%
-\dumbquotes\frsmartquotes}
+\AtBeginDocument{\dechsmartquotes\dechdumbquotes\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes\dumbquotes\dumbquotes\frsmartquotes}
 \renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
 
 
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deutsch (Schweiz) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\luaexec{function dechdoublequotes ( s )
+           return ( s:gsub ( '"(..-)"' , "«\%1»" ) )
+         end}
+
+
+\luaexec{function dechsinglequotelinestart ( s )
+           return (s:gsub ("^'","'" )  )
+        end}
+\luaexec{function dechsinglequotesclose( s )
+return ( s:gsub ( " '(..-)'", " ‹\%1›" ) )
+         end}
+%% Two utility macros to activate/deactivate the Lua function:
+\newcommand\dechdoublequoteson{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,dechdoublequotes , "dechdoublequotes" )}}
+\newcommand\dechdoublequotesoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "dechdoublequotes" )}}
+\newcommand\dechsinglequotelinestarton{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,dechsinglequotelinestart , "dechsinglequotelinestart" )}}
+\newcommand\dechsinglequotelinestartoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "dechsinglequotelinestart" )}}
+   \newcommand\dechsinglequotescloseon{\directlua{luatexbase.add_to_callback (
+   "process_input_buffer" ,dechsinglequotesclose , "dechsinglequotesclose" )}}
+\newcommand\dechsinglequotescloseoff{\directlua{luatexbase.remove_from_callback (
+   "process_input_buffer" , "dechsinglequotesclose" )}}
+   \newcommand{\dechsmartquotes}{\dechdoublequoteson
+   \dechsinglequotespon
+   \dechsinglequotespcloseon
+\dechsinglequotelinestarton
+\dechsinglequotescloseon}
+   \newcommand{\dechdumbquotes}{\dechdoublequotesoff
+   \dechsinglequotespoff
+   \dechsinglequotespcloseoff
+\dechsinglequotelinestartoff
+\dechsinglequotescloseoff}
+   \DeclareOption{dech}{
+\AtBeginDocument{\desmartquotes\dedumbquotes\degmsmartquotes\degmdumbquotes\smartquotes\dumbquotes\dumbquotes\frsmartquotes\frdumbquotes\dechsmartquotes}
+\renewcommand{\texttt}[1]{{\ttfamily\addfontfeature{RawFeature={+qtbye,-tlig}} #1}}
+
+
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Default option is English
@@ -766,8 +853,14 @@ return ( s:gsub ( " '(..-)'", " ‹\\,\%1\\,›" ) )
 
 
   
+
+  
 \end{minted}
 \section{Version History}
+\subsection*{\normalfont\texttt{1.4.0}}
+\ttfamily Added support for Swiss German options, on user request
+
+
 \subsection*{\normalfont\texttt{1.3.0}}
 \ttfamily 15 January 2023 fixed single quotes and parentheses
 
